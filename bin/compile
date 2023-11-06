@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "Installing youtube-dl"
+
+BUILD_DIR=$1
+VENDOR_DIR="vendor"
+
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+
+curl -L --silent https://yt-dl.org/downloads/latest/youtube-dl -o youtube-dl/bin/youtube-dl
+
+chmod a+rx youtube-dl
+export PATH=$PATH:$BUILD_DIR/$VENDOR_DIR/youtube-dl/bin/
