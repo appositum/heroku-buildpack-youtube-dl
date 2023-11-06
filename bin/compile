@@ -16,7 +16,6 @@ mkdir -p youtube-dl/bin/
 
 curl -L --silent https://yt-dl.org/downloads/latest/youtube-dl -o youtube-dl/bin/youtube-dl
 chmod a+rx youtube-dl/bin/youtube-dl
-#PATH=$PATH:$HOME/vendor/youtube-dl/bin/
 
 echo "Exporting PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/youtube-dl.sh"
