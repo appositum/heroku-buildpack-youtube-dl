@@ -1,4 +1,4 @@
-### Heroku buildpack for youtube-dl
+### Heroku buildpack for youtube-dl (duh)
 
 - [Heroku](https://heroku.com/)
 - [youtube-dl](https://youtube-dl.org/)
