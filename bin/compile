@@ -1,6 +1,10 @@
 #!/bin/sh
 
-echo "Installing youtube-dl"
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Install youtube-dl"
 
 BUILD_DIR=$1
 VENDOR_DIR="vendor"
@@ -8,8 +12,13 @@ VENDOR_DIR="vendor"
 cd $BUILD_DIR
 mkdir -p $VENDOR_DIR
 cd $VENDOR_DIR
+mkdir -p youtube-dl/bin/
 
 curl -L --silent https://yt-dl.org/downloads/latest/youtube-dl -o youtube-dl/bin/youtube-dl
+chmod a+rx youtube-dl/bin/youtube-dl
+#PATH=$PATH:$HOME/vendor/youtube-dl/bin/
 
-chmod a+rx youtube-dl
-export PATH=$PATH:$BUILD_DIR/$VENDOR_DIR/youtube-dl/bin/
+echo "Exporting PATH" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/youtube-dl.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:$HOME/vendor/youtube-dl/bin"' >> $PROFILE_PATH
